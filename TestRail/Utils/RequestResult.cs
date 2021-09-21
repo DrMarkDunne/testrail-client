@@ -38,7 +38,7 @@ namespace TestRail.Utils
                 RawJson = rawJson;
                 // Welcome to the nightmare zone
                 var parseType = typeof(T);
-                var isList = typeof(IEnumerable).IsAssignableFrom(typeof(T));
+                var isList = typeof(System.Collections.IEnumerable).IsAssignableFrom(typeof(T));
                 if (isList)
                 {
                     parseType = typeof(T).GetGenericArguments().Single();
@@ -56,13 +56,16 @@ namespace TestRail.Utils
                         var unwrapped = JsonConvert.DeserializeObject<List<JObject>>(rawJson);
                         Payload = (T)Activator.CreateInstance(typeof(List<>).MakeGenericType(parseType));
                         var list = Payload as IList;
-                        foreach (var obj in unwrapped.Select(value => staticConstructionMethod.Invoke(null, new object[] { value })))
+                        foreach (var value in unwrapped)
                         {
-                            list?.Add(obj);
+                            var obj = staticConstructionMethod.Invoke(null, new object[] { value });
+                            list.Add(obj);
                         }
                     }
                     else
+                    {
                         Payload = (T)staticConstructionMethod.Invoke(null, new object[] { JObject.Parse(rawJson) });
+                    }
                 }
             }
 

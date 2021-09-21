@@ -176,26 +176,26 @@ namespace TestRail.Types
 
             if (null != CaseIds && 0 < CaseIds.Count)
             {
-                var jarray = new JArray();
+                var jArray = new JArray();
 
                 foreach (var caseId in CaseIds)
                 {
-                    jarray.Add(caseId);
+                    jArray.Add(caseId);
                 }
 
-                jsonParams.case_ids = jarray;
+                jsonParams.case_ids = jArray;
             }
 
             if (null != ConfigIds && 0 < ConfigIds.Count)
             {
-                var jarray = new JArray();
+                var jArray = new JArray();
 
                 foreach (var configId in ConfigIds)
                 {
-                    jarray.Add(configId);
+                    jArray.Add(configId);
                 }
 
-                jsonParams.config_ids = jarray;
+                jsonParams.config_ids = jArray;
             }
 
             return jsonParams;

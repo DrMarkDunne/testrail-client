@@ -94,31 +94,31 @@ namespace TestRail.Types
 
         #region Private Methods
         /// <summary>Convert the JArray to a list of Run IDs</summary>
-        /// <param name="jarray">json to parse</param>
+        /// <param name="jArray">json to parse</param>
         /// <returns>a list of run IDs, list of size 0 if none exist</returns>
-        private static List<ulong> ConvertToRunIDs(JArray jarray)
+        private static List<ulong> ConvertToRunIDs(JArray jArray)
         {
             var list = new List<ulong>();
 
-            if (null != jarray)
+            if (null != jArray)
             {
                 // TODO - Convert to LINQ
-                list.AddRange(from jt in jarray where null != (ulong?)jt["id"] select (ulong)jt["id"]);
+                list.AddRange(from jt in jArray where null != (ulong?)jt["id"] select (ulong)jt["id"]);
             }
 
             return list;
         }
 
         /// <summary>Convert the Jarray to a list of case IDs</summary>
-        /// <param name="jarray">json to parse</param>
+        /// <param name="jArray">json to parse</param>
         /// <returns>a list of case IDs, list of size 0 if none exist</returns>
-        private static List<ulong> ConvertToCaseIDs(JArray jarray)
+        private static List<ulong> ConvertToCaseIDs(JArray jArray)
         {
             var list = new List<ulong>();
 
-            if (null != jarray)
+            if (null != jArray)
             {
-                list.AddRange(from JValue jsonItem in jarray select (ulong)jsonItem);
+                list.AddRange(from JValue jsonItem in jArray select (ulong)jsonItem);
             }
 
             return list;

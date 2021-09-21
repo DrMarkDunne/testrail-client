@@ -37,16 +37,16 @@ namespace TestRail.Utils
         }
 
         /// <summary>Converts a JArray into a List of type T</summary>
-        /// <param name="jarray">JArray to parse</param>
+        /// <param name="jArray">JArray to parse</param>
         /// <param name="parse">The method being used to parse the JArray</param>
         /// <returns>returns a list of objects corresponding to the json, empty list if nothing exists</returns>
-        internal static List<T> ConvertJArrayToList<T>(JArray jarray, Func<JObject, T> parse) where T : BaseTestRailType
+        internal static List<T> ConvertJArrayToList<T>(JArray jArray, Func<JObject, T> parse) where T : BaseTestRailType
         {
             var list = new List<T>();
 
-            if (null != jarray && null != parse)
+            if (null != jArray && null != parse)
             {
-                list.AddRange(from JObject json in jarray select parse(json));
+                list.AddRange(from JObject json in jArray select parse(json));
             }
 
             return list;

@@ -35,9 +35,9 @@ namespace TestRail.Types
                 // add values to the list if not empty
                 configContext.ProjectIds = new List<string>();
 
-                var jarray = (JArray)jval;
+                var jArray = (JArray)jval;
 
-                foreach (var jsonItem in jarray.Cast<JValue>())
+                foreach (var jsonItem in jArray.Cast<JValue>())
                 {
                     configContext.ProjectIds.Add((string)jsonItem);
                 }
